@@ -52,7 +52,7 @@
 ### Authors
 
 - Wajdi-khelifi 👾
-- IhebChaoued [@](https://github.com/IhebChaoued) 👨‍💻
+- IhebChaoued [@IhebChaoud](https://github.com/IhebChaoued) 👨‍💻
 
 
 ## Tasks
