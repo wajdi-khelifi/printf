@@ -1,44 +1,73 @@
 #include "main.h"
+
 /**
- * _printf - printf function
- * @format: const char pointer
- * Return: b_len
- * this is the start of the file
+ * print_char - Prints a single character to stdout.
+ *
+ * @c: The character to be printed.
+ *
+ * Return: The number of characters printed (always 1).
+ */
+int print_char(char c)
+{
+	putchar(c);
+	return (1);
+}
+
+
+/**
+ * print_string - Prints a string to stdout.
+ * @str: The string to be printed.
+ *
+ * Return: The number of characters printed by printf function.
+ */
+int print_string(const char *str)
+{
+	return (printf("%s", str));
+}
+
+/**
+ * _printf - function that handles format specifiers 'c', 's', and '%'.
+ * @format: The format string containing the text and format specifiers.
+ *
+ * Return: The total number of characters printed (excluding the null byte).
  */
 int _printf(const char *format, ...)
 {
-	int (*pfunc)(va_list, flags_t *);
-	const char *p;
-	va_list arguments;
-	flags_t flags = {0, 0, 0};
+	va_list args;
 
-	register int count = 0;
+	va_start(args, format);
 
-	va_start(arguments, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	for (p = format; *p; p++)
+	int chars_printed = 0;
+
+	while (*format != '\0')
 	{
-		if (*p == '%')
+		if (*format == '%')
 		{
-			p++;
-			if (*p == '%')
+			format++;
+			switch (*format)
 			{
-				count += _putchar('%');
-				continue;
+				case 'c':
+					chars_printed += print_char(va_arg(args, int));
+					break;
+				case 's':
+					chars_printed += print_string(va_arg(args, const char*));
+					break;
+				case '%':
+					chars_printed += print_char('%');
+					break;
+				default:
+					chars_printed += print_char('%');
+					chars_printed += print_char(*format);
+					break;
 			}
-			while (get_flag(*p, &flags))
-				p++;
-			pfunc = get_print(*p);
-			count += (pfunc)
-				? pfunc(arguments, &flags)
-				: _printf("%%%c", *p);
-		} else
-			count += _putchar(*p);
+		}
+		else
+		{
+			chars_printed += print_char(*format);
+		}
+		format++;
 	}
-	_putchar(-1);
-	va_end(arguments);
-	return (count);
+
+	va_end(args);
+	return (chars_printed);
 }
