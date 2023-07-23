@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 /**
@@ -29,8 +28,6 @@ typedef struct printHandler
 	char c;
 	int (*f)(va_list ap, flags_t *f);
 } ph;
-int print_char(char c);
-int print_string(const char *str);
 int print_int(va_list l, flags_t *f);
 void print_number(int n);
 int print_unsigned(va_list l, flags_t *f);
