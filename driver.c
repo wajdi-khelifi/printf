@@ -1,28 +1,23 @@
 #include "main.h"
 
 /**
-* driver - Selector for the type of print function.
-* @format: Format string.
-* Description:
-*   The function loops through the `selector[]` array of structs to find the
-*   appropriate print function based on the given conversion specifier in the
-*   format string.
-*
-* @format: The format string containing the conversion specifier to be matched.
-*
-* Return:
-*   A pointer to the corresponding print function if the conversion specifier
-*   is found in the `selector[]` array; otherwise, returns NULL.
-*/
+ * driver - selector for type of fun.
+ * @format: string.
+ * Description: the function loops through the structs
+ * selector[] ment of the struct.
+ * Return: a pointer
+ * structype selector - Struct
+ */
+
 int (*driver(char *format))(char *, va_list)
 {
 	int i;
 
-/**
-* structype - Structure to hold conversion specifiers and print functions.
-* @q: Conversion specifier string.
-* @u: Pointer to the corresponding print function.
-*/
+	struct structype
+	{
+		char *q;
+		int (*u)(char *, va_list);
+	};
 
 	structype selector[] = {
 		{"%c", printc},
