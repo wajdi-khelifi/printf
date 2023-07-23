@@ -6,6 +6,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+#define BUFFER_SIZE 1024
+
 /**
  * struct structprint - structure containing
  * @q: the location and method to translate data to characters.
