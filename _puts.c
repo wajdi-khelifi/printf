@@ -12,8 +12,7 @@ int _puts(char *string)
 
 	while (*string)
 	{
-		if (_putchar(*string) == -1)
-		       return (-1);	
+		_putchar(*string);
 		string++;
 		contador++;
 	}
