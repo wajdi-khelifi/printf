@@ -26,7 +26,7 @@ int _putchar(char ch);
 int _puts(char *string);
 int printc(char *format, va_list);
 int printstr(char *format, va_list pa);
-int (*driver(char *format))(char *format, va_list);
+int (*driver(char *format))(char *, va_list);
 int _printf(char *format, ...);
 int printint(char *format, va_list pa);
 int integer(int number);
